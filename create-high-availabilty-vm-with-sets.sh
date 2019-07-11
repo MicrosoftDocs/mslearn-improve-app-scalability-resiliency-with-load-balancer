@@ -43,7 +43,7 @@ for i in `seq 1 2`; do
     echo '------------------------------------------'
     echo 'Creating webVM'$i
     az vm create \
-        --admin-username azureuser \    
+        --admin-username azureuser \
         --resource-group $RgName \
         --name webVM$i \
         --nics webNic$i \
