@@ -1,7 +1,7 @@
 #!/bin/bash
+# Usage: bash create-high-availability-vm-with-sets.sh <Resource Group Name>
 
-RgName=`az group list --query '[].name' --output tsv`
-Location="westus2"
+RgName=$1
 
 date
 # Create a Virtual Network for the VMs
@@ -9,7 +9,6 @@ echo '------------------------------------------'
 echo 'Creating a Virtual Network for the VMs'
 az network vnet create \
     --resource-group $RgName \
-    --location $Location \
     --name bePortalVnet \
     --subnet-name bePortalSubnet 
 
@@ -18,8 +17,7 @@ echo '------------------------------------------'
 echo 'Creating a Network Security Group'
 az network nsg create \
     --resource-group $RgName \
-    --name bePortalNSG \
-    --location $Location
+    --name bePortalNSG 
 
 # Create the NIC
 for i in `seq 1 2`; do
@@ -30,8 +28,7 @@ for i in `seq 1 2`; do
     --name webNic$i \
     --vnet-name bePortalVnet \
     --subnet bePortalSubnet \
-    --network-security-group bePortalNSG \
-    --location $Location
+    --network-security-group bePortalNSG
 done 
 
 # Create an availability set
@@ -50,7 +47,6 @@ for i in `seq 1 2`; do
         --resource-group $RgName \
         --name webVM$i \
         --nics webNic$i \
-        --location $Location \
         --image UbuntuLTS \
         --availability-set portalAvailabilitySet \
         --generate-ssh-keys \
