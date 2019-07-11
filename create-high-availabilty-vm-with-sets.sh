@@ -34,9 +34,7 @@ done
 # Create an availability set
 echo '------------------------------------------'
 echo 'Creating an availability set'
-az vm availability-set create \
-    --resource-group $RgName \
-    --name portalAvailabilitySet
+az vm availability-set create --resource-group $RgName --name portalAvailabilitySet
 
 # Create 2 VM's from a template
 for i in `seq 1 2`; do
