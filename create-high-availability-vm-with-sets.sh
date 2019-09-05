@@ -19,6 +19,23 @@ az network nsg create \
     --resource-group $RgName \
     --name bePortalNSG 
 
+# Add inbound rule on port 80
+echo '------------------------------------------'
+echo 'Allowing access on port 80'
+az network nsg rule create \
+    --resource-group $RgName \
+    --nsg-name bePortalNSG \
+    --name Allow-80-Inbound \
+    --priority 110 \
+    --source-address-prefixes '*' \
+    --source-port-ranges '*' \
+    --destination-address-prefixes '*' \
+    --destination-port-ranges 80 \
+    --access Allow \
+    --protocol Tcp \
+    --direction Inbound \
+    --description "Allow inbound on port 80."
+
 # Create the NIC
 for i in `seq 1 2`; do
   echo '------------------------------------------'
