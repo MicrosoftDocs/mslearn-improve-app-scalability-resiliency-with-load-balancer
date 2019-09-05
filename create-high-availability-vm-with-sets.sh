@@ -55,7 +55,3 @@ done
 echo '--------------------------------------------------------'
 echo '             VM Setup Script Completed'
 echo '--------------------------------------------------------'
-echo ' Now visit the Azure portal to setup the Load Balancer' 
-echo ' https://portal.azure.com/learn.docs.microsoft.com'
-echo '--------------------------------------------------------'
-date
