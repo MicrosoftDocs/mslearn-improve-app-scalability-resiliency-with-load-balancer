@@ -119,7 +119,7 @@ for i in `seq 1 2`; do
     --resource-group $RgName \
     --name dbVM$i \
     --nics dbNic$i \
-    --image UbuntuLTS \
+    --image Ubuntu2204 \
     --zone $i \
     --generate-ssh-keys \
     --custom-data backend-init.txt
