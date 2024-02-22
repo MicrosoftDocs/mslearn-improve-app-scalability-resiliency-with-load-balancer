@@ -62,7 +62,7 @@ for i in `seq 1 2`; do
         --resource-group $RgName \
         --name webVM$i \
         --nics webNic$i \
-        --image UbuntuLTS \
+        --image Ubuntu2204 \
         --availability-set portalAvailabilitySet \
         --generate-ssh-keys \
         --custom-data cloud-init.txt
